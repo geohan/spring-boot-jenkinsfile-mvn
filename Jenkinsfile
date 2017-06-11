@@ -5,11 +5,11 @@ node {
     }
     
     stage ('Check build environment') {
-        sh 'mvn -v'
+        sh "'${mvnHome}/bin/mvn' -v"
         sh 'java -version'
     }
 
     stage ('test') {
-        sh 'mvn test'
+        sh "'${mvnHome}/bin/mvn' test"
     }
 }
