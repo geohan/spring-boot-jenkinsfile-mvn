@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  data:
+    image: alpine
+    command: "/bin/sh"
+
+  install:
+    image: maven
+    volumes:
+      - ../:/app
+      - ~/.m2:/root/.m2
+#    volumes_from:
+#      - data
+    working_dir: /app
+    command: bash -c "pwd && ls -l"
+#    command: "ls -l && mvn install"
+#
+  test:
+    image: maven
+    volumes:
+      - ../:/app
+      - ~/.m2:/root/.m2
+#    volumes_from:
+#      - data
+    working_dir: /app
+    command: "mvn test"
+
+  server:
+    image: maven
+    volumes:
+      - ../:/app
+      - ~/.m2:/root/.m2
+#    volumes_from:
+#      - data
+    working_dir: /app
+    ports:
+     - "8000:8000"
+    command: "mvn spring-boot:run"
+
+  package:
+    image: maven
+    volumes:
+      - ../:/app
+      - ~/.m2:/root/.m2
+#    volumes_from:
+#      - data
+    working_dir: /app
+    command: "mvn package"
