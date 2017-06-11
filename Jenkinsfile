@@ -4,6 +4,7 @@ node {
     }
     
     stage ('check env') {
+        def mvnHome = tool 'M3'
         sh 'mvn -v'
         sh 'java -version'
     }
