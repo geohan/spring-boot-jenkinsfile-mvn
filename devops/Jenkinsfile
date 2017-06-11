@@ -14,8 +14,8 @@ node {
     stage 'package'
     sh "'${mvnHome}/bin/mvn' package"
 
-    stage 'preview'
-    sh 'make deploy-default'
+//    stage 'preview'
+//    sh 'make deploy-default'
 
 //    stage 'report'
 //    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
