@@ -1,3 +1,0 @@
-node {
-    stage 'checkout project'
-}
