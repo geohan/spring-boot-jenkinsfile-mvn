@@ -15,7 +15,7 @@ node {
     }
 
     stage 'package'
-    sh "mvn package"
+    sh "'${mvnHome}/bin/mvn' package"
 
 //    stage 'preview'
 //    sh 'make deploy-default'
