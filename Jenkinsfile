@@ -1,5 +1,6 @@
 node {
     def mvnHome = tool 'M3'
+
     stage ('checkout project') {
         git url: 'https://github.com/ravis-git/spring-boot-jenkinsfile-mvn.git'
     }
@@ -12,4 +13,17 @@ node {
     stage ('test') {
         sh "'${mvnHome}/bin/mvn' test"
     }
+
+    stage 'package'
+    sh "mvn package"
+
+//    stage 'preview'
+//    sh 'make deploy-default'
+
+//    stage 'report'
+//    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+
+//    stage 'Artifact'
+//    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
+
 }
